@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #colorBox {
+            width: 100vw;
+            height: 100vh;
+            background-color: red;
+        }
+        .buttonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        button{
+            display: flex;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <div id="colorBox"></div> 
+   <button id="changeColorButton">Change!</button>
+</body>
+<script>
+    const colorBox = document.getElementById("colorBox")
+    const changeColorButton = document.getElementById("changeColorButton");
+
+    const colors = ["green", "blue", "yellow", "red", "black"];
+
+    changeColorButton.addEventListener ("click", () => {
+        const randomColor = colors[Math.floor(Math.random()*colors.length)];
+    colorBox.style.backgroundColor = randomColor;
+});
+</script>
+</html>
