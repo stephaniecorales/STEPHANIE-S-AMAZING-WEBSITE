@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Mouse Example 3</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        background-color: yellow;
+        overflow: hidden;
+      }
+
+      #cursor {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+
+      .trace {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let currentSpeed = 100;
+        let slowdownInterval = 60 * 1000;
+        let lastSlowdown = Date.now();
+
+        $(document).mousemove(function (event) {
+          const now = Date.now();
+
+          if (now - lastSlowdown > slowdownInterval) {
+            currentSpeed *= 1.25;
+            lastSlowdown = now;
+          }
+
+          $("#cursor").stop().animate(
+            {
+              left: event.pageX,
+              top: event.pageY,
+            },
+            currentSpeed
+          );
+
+          let trace = $('<div class="trace"></div>').appendTo("body");
+
+          trace.css({
+            left: event.pageX + "px",
+            top: event.pageY + "px",
+            opacity: 1,
+          });
+
+          trace.animate(
+            {
+              opacity: 0,
+            },
+            1000,
+            function () {
+              $(this).remove();
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

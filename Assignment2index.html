@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment2Index</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(210, 210, 163);
+        }
+
+        .bus-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bus {
+            position: absolute;
+            bottom: -100px;
+            width: 100px;
+            animation: drive-towards 5s ease-in-out infinite;
+            left: 50%; /* Center the bus horizontally */
+            transform: translateX(-50%);
+        }
+
+        .evidence-link {
+            position: absolute;
+            top: 20px;
+            color: black;
+            text-decoration: underline;
+            font-size: 1.2em;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff6, 0 0 15px #ff6, 0 0 20px #ff6;
+                color: white;
+            }
+            50% {
+                text-shadow: 0 0 10px #ff6, 0 0 20px #ff9, 0 0 30px #ff9, 0 0 40px #ff9;
+                color: whitesmoke;
+            }
+        }
+
+        @keyframes drive-towards {
+            0% {
+                transform: translateX(-50%) scale(0.5);
+                bottom: -100px;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.5);
+                bottom: 50%;
+            }
+            10% {
+                transform: translateX(-50%) scale(2.5);
+                bottom: 100%;
+        
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="Assignment2.html" class="evidence-link">Click here for evidence of the Ramsafe secret bus</a>
+
+    <div class="bus-container">
+        <img src="RamBus.jpg" alt="Bus driving toward you" class="bus">
+    </div>
+    <audio id="racing-sound" src="racing-sound.mp3" loop></audio>
+    <script>
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('racing-sound');
+            audio.play().catch(error => {
+                console.log('Auto-play was prevented; user interaction is required:', error);
+            });
+        });
+</body>
+</html>
+

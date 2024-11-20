@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Keyboard Example 01</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide scrollbars */
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+
+    <script>
+        // Map each letter to an emoji
+        const emojis = {
+            'a': '😀', 'b': '😁', 'c': '😂', 'd': '😃', 'e': '😄',
+            'f': '😅', 'g': '😆', 'h': '😉', 'i': '😊', 'j': '😋',
+            'k': '😎', 'l': '😍', 'm': '😘', 'n': '😗', 'o': '😙',
+            'p': '😚', 'q': '🙂', 'r': '🤗', 's': '🤩', 't': '🤔',
+            'u': '🤨', 'v': '😐', 'w': '😑', 'x': '😶', 'y': '🙄', 'z': '😏'
+        };
+
+        // Map each letter to a specific frequency
+        const frequencies = {
+            'a': 261.63, 'b': 277.18, 'c': 293.66, 'd': 311.13, 'e': 329.63,
+            'f': 349.23, 'g': 369.99, 'h': 392.00, 'i': 415.30, 'j': 440.00,
+            'k': 466.16, 'l': 493.88, 'm': 523.25, 'n': 554.37, 'o': 587.33,
+            'p': 622.25, 'q': 659.25, 'r': 698.46, 's': 739.99, 't': 783.99,
+            'u': 830.61, 'v': 880.00, 'w': 932.33, 'x': 987.77, 'y': 1046.50, 'z': 1108.73
+        };
+
+        let typedEmojis = []; // Array to hold emojis typed
+        let lineHeight = 60; // Vertical spacing between lines
+
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            textSize(50); // Set emoji size
+            textAlign(LEFT, TOP); // Align text to top-left
+        }
+
+        function draw() {
+            background(0); // Set background to black
+            fill(255); // Set text color to white
+            displayTypedEmojis(); // Display emojis as they are typed
+        }
+
+        function displayTypedEmojis() {
+            let x = 10; // Starting x position for emojis
+            let y = 10; // Starting y position for emojis
+
+            typedEmojis.forEach(emoji => {
+                text(emoji, x, y);
+                x += textWidth(emoji) + 10; // Move x for next emoji
+                if (x > width - 50) { // Wrap text to new line if at canvas edge
+                    x = 10;
+                    y += lineHeight;
+                }
+            });
+        }
+
+        function keyPressed() {
+            if (key >= 'a' && key <= 'z') {
+                let emoji = emojis[key]; // Get corresponding emoji
+                typedEmojis.push(emoji); // Add emoji to the array
+                playSpecificSound(key); // Play sound associated with the key
+            }
+        }
+
+        function playSpecificSound(key) {
+            let freq = frequencies[key]; // Get frequency for the specific key
+            let osc = new p5.Oscillator();
+            osc.setType('sine');
+            osc.freq(freq);
+            osc.start();
+            osc.amp(0.5);
+            setTimeout(() => osc.stop(), 200); // Stop sound after 200ms
+        }
+    </script>
+</body>
+</html>

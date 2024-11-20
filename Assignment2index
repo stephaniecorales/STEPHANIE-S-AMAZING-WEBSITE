@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Bus</title>
+    <style>
+        body {
+            background-color: rgb(210, 210, 163);
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Bus container to position the animation */
+        .bus-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Bus image with animation */
+        .bus {
+            position: absolute;
+            bottom: -100px; /* Start slightly below the viewport */
+            width: 100px; /* Start small */
+            animation: drive-towards 5s ease-in-out infinite;
+        }
+
+        /* Keyframes for animation */
+        @keyframes drive-towards {
+            0% {
+                transform: translateX(-50%) scale(0.5); /* Small and at the bottom */
+                bottom: -100px;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.5); /* Larger and moving upward */
+                bottom: 50%;
+            }
+            100% {
+                transform: translateX(-50%) scale(2.5); /* Even larger, at the top */
+                bottom: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bus-container">
+        <img src="bus.png" alt="Bus driving toward you" class="bus">
+    </div>
+</body>
+</html>

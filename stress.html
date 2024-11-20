@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+    <style>
+
+* {
+    margin:0;
+    padding: 0;
+}
+
+body {
+background: blue;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.head {
+    position:relative;
+    width:300px;
+    height: 300px;
+    background: bisque;
+    border-radius: 70% 70% 50% 50%; 
+    box-shadow: inset 0 0 10px gray;
+    animation: embarrassed 10s infinite;
+}
+.hair {
+    position:absolute;
+    width:300px;
+    height: 150px;
+    background: rgba(107, 29, 29);
+    top: -10px;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+}
+.eye-left {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background:white;
+    top:120px;
+    left:50px;
+    border-radius: 50%;
+}
+.eye-right {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background:white;
+    top: 3px;
+    right: -150px;
+    border-radius: 50%;
+}
+.iris-left{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background:rgb(0, 0, 0);
+    top:10px;
+    left:15px;
+    border-radius: 50%;
+}
+.iris-right{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background:rgb(0, 0, 0);
+    top:10px;
+    right:-130px;
+    border-radius: 50%;
+}
+.nose{
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background:bisque;
+    border-radius: 50%;
+    border-bottom: 5px solid black;
+    top: 180 px;
+    left: 110px;
+    animation: embarrassed 10s infinite;
+
+}
+.mouth {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    background: bisque;
+    border-radius: 50%;
+    border-top: 5px solid black;
+    top: 510px;
+    left: 100px;
+    animation: embarrassed 10s infinite;
+
+
+}
+@keyframes embarrassed {
+    0% {
+        background-color: bisque;
+    }
+    50% {
+        background-color: green;
+    }
+    100% {
+        background-color: red;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="head">
+        <div class="hair">    
+        </div>
+        <div class="eye-left">
+        <div class= "iris-left">
+        </div>
+        <div class="eye-right"></div>
+        <div class= "iris-right"> </div>
+
+
+    </body>
+    </html>

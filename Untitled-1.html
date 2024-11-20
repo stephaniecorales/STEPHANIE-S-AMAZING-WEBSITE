@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three-Headed Dog</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #282C34, #62666D);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .dog-head {
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+    }
+
+    .head1 {
+      left: -150px;
+    }
+
+    .head2 {
+      left: 0;
+    }
+
+    .head3 {
+      left: 150px;
+    }
+
+    .eye {
+      width: 30px;
+      height: 30px;
+      background-color: orange;
+      border-radius: 50%;
+      position: absolute;
+      top: 60px;
+      left: 40px;
+    }
+
+    .nose {
+      width: 50px;
+      height: 30px;
+      background-color: teal;
+      border-radius: 50%;
+      position: absolute;
+      top: 120px;
+      left: 75px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dog-head head1">
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="dog-head head2">
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="dog-head head3">
+      <div class="eye"></div>
+      <div class="nose"></div>
+    </div>
+  </div>
+</body>
+</html>

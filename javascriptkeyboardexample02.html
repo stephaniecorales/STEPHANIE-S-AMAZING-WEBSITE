@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Keyboard Example 02</title>
+    <style>
+      body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+      }
+      .circle {
+        background-color: yellow;
+        border-radius: 50%;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include jQuery and jQuery UI libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function () {
+        const circleContainer = $("body");
+
+        // Event listener for key code events
+        $(document).on("keydown", function (event) {
+          const keyCode = event.keyCode;
+          if (keyCode >= 65 && keyCode <= 90) { // 'a' to 'z' keys
+            createYellowCircle(); // Call createYellowCircle without passing the letter
+          }
+        });
+
+        // Function to create a yellow circle at a random position and size
+        function createYellowCircle() {
+          const $circle = $("<div class='circle'></div>"); // Create circle without text
+
+          // Generate a random size between 20px and 100px
+          const size = Math.floor(Math.random() * 81) + 20;
+
+          // Set a random position and size for the circle within the viewport
+          $circle.css({
+            width: size + "px",
+            height: size + "px",
+            top: Math.random() * ($(window).height() - size),
+            left: Math.random() * ($(window).width() - size),
+          });
+
+          // Append the circle to the body and remove it after 1 second
+          circleContainer.append($circle);
+          setTimeout(function () {
+            $circle.remove();
+          }, 1000); // 1000 milliseconds (1 second)
+        }
+      });
+    </script>
+  </body>
+</html>
